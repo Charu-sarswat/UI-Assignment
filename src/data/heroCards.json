@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "headline": "Easy In-Store Payments",
+    "subheadline": "for India's boldest disruptors",
+    "features": "Quick Payments | Seamless Integration | Top-tier UPI stack",
+    "personName": "Sagar",
+    "personTitle": "WOW! MOMO FOUNDER",
+    "personPhoto": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
+    "companyName": "WOW! momo",
+    "poweredBy": "POWERS WOW! momo"
+  },
+  {
+    "id": 2,
+    "headline": "Streamline Your Workflow",
+    "subheadline": "for modern development teams",
+    "features": "Fast Deploys | Real-time Monitoring | Automated Pipelines",
+    "personName": "Maya Patel",
+    "personTitle": "Lead Engineer, Orbit",
+    "personPhoto": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80",
+    "companyName": "Orbit",
+    "poweredBy": "POWERS Orbit"
+  },
+  {
+    "id": 3,
+    "headline": "Build Faster Together",
+    "subheadline": "for innovative startups",
+    "features": "Team Collaboration | Version Control | Cloud Integration",
+    "personName": "Luca Rivera",
+    "personTitle": "CTO, ByteFoundry",
+    "personPhoto": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+    "companyName": "ByteFoundry",
+    "poweredBy": "POWERS ByteFoundry"
+  },
+  {
+    "id": 4,
+    "headline": "Scale Your Platform",
+    "subheadline": "for growing businesses",
+    "features": "Auto Scaling | Load Balancing | Performance Metrics",
+    "personName": "Zoe Kim",
+    "personTitle": "Platform PM, Skylink",
+    "personPhoto": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80",
+    "companyName": "Skylink",
+    "poweredBy": "POWERS Skylink"
+  },
+  {
+    "id": 5,
+    "headline": "Deploy with Confidence",
+    "subheadline": "for enterprise teams",
+    "features": "CI/CD Pipelines | Security First | Compliance Ready",
+    "personName": "Nikhil Bose",
+    "personTitle": "Founder, Sprout Labs",
+    "personPhoto": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+    "companyName": "Sprout Labs",
+    "poweredBy": "POWERS Sprout Labs"
+  }
+]
+

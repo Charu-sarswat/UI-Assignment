@@ -1,0 +1,106 @@
+import { useEffect, useRef } from "react";
+import testimonials from "../data/testimonials.json";
+
+function Testimonials() {
+  // Duplicate testimonials exactly 2 times for seamless infinite scroll
+  const marqueeItems = [...testimonials, ...testimonials];
+  const scrollRef = useRef(null);
+  const positionRef = useRef(0);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const speed = 0.8; // pixels per frame (adjust for speed - higher = faster)
+    let animationId;
+
+    const animate = () => {
+      positionRef.current -= speed;
+
+      // Get the width of one set (half the total scrollWidth since we duplicated)
+      const totalWidth = scrollContainer.scrollWidth;
+      const oneSetWidth = totalWidth / 2;
+
+      // When we've scrolled one full set, reset to 0
+      // This is seamless because the second set is identical to the first
+      if (Math.abs(positionRef.current) >= oneSetWidth) {
+        positionRef.current = 0;
+      }
+
+      scrollContainer.style.transform = `translateX(${positionRef.current}px)`;
+      animationId = requestAnimationFrame(animate);
+    };
+
+    // Start animation after a brief delay to ensure DOM is ready
+    const timeoutId = setTimeout(() => {
+      animate();
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  }, []);
+
+  return (
+    <section className="bg-white py-10">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mb-10 text-center text-slate-900">
+          <p className="text-sm uppercase tracking-[0.3em] text-teal-600">
+            Voices
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold">Stories from builders</h2>
+          <p className="mt-4 text-slate-600">
+            Hover a portrait to flip the card and read how DevFlow fits their
+            workflow.
+          </p>
+        </div>
+      </div>
+      <div className="overflow-hidden py-6">
+        <div
+          ref={scrollRef}
+          className="flex items-center gap-8 px-6 pb-8 will-change-transform"
+        >
+          {marqueeItems.map((person, index) => (
+            <article
+              key={`${person.id}-${index}`}
+              className="group relative h-[20rem] w-[22rem] shrink-0 cursor-pointer transition-transform duration-500 even:translate-y-6 odd:-translate-y-4"
+            >
+              <div className="relative h-full w-full rounded-xl border border-slate-100 bg-white shadow-lg transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <div className="absolute inset-0 overflow-hidden rounded-xl bg-slate-900/80 text-white [backface-visibility:hidden]">
+                  <img
+                    src={person.photo}
+                    alt={person.name}
+                    className="absolute inset-0 h-full w-full object-cover grayscale"
+                  />
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-t from-black via-black/40 to-transparent" />
+                  <div className="absolute left-5 right-5 bottom-5">
+                    <p className="text-lg font-semibold leading-tight">
+                      {person.name}
+                    </p>
+                    <p className="text-sm text-slate-200">{person.role}</p>
+                  </div>
+                </div>
+                <div className="absolute inset-0 flex h-full flex-col justify-between rounded-xl border border-slate-100 bg-white p-6 text-slate-900 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <p className="text-lg font-semibold leading-tight text-slate-900">
+                    “{person.feedback}”
+                  </p>
+                  <div className="text-sm text-slate-500">
+                    <p className="font-semibold text-slate-800">
+                      {person.name}
+                    </p>
+                    <p>{person.role}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default Testimonials;

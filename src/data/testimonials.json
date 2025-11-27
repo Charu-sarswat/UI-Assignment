@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "Maya Patel",
+        "role": "Lead Engineer, Orbit",
+        "avatar": "https://placehold.co/80x80?text=M",
+        "photo": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80",
+        "feedback": "We launched faster because DevFlow keeps our docs, deployments, and alerts in one calm surface."
+    },
+    {
+        "id": 2,
+        "name": "Luca Rivera",
+        "role": "CTO, ByteFoundry",
+        "avatar": "https://placehold.co/80x80?text=L",
+        "photo": "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=600&q=80",
+        "feedback": "Beginners on our team can see shipping steps clearly, and power users script anything they need."
+    },
+    {
+        "id": 3,
+        "name": "Zoe Kim",
+        "role": "Platform PM, Skylink",
+        "avatar": "https://placehold.co/80x80?text=Z",
+        "photo": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80",
+        "feedback": "Small quality-of-life touches like the code editor preview delight us during demos."
+    },
+    {
+        "id": 4,
+        "name": "Nikhil Bose",
+        "role": "Founder, Sprout Labs",
+        "avatar": "https://placehold.co/80x80?text=N",
+        "photo": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=600&q=80",
+        "feedback": "The pipeline presets meant we could demo to investors without spending a weekend wiring things up."
+    },
+    {
+        "id": 5,
+        "name": "Aisha Rahman",
+        "role": "VP Engineering, Flux",
+        "avatar": "https://placehold.co/80x80?text=A",
+        "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+        "feedback": "DevFlow keeps compliance, infra, and docs in sync so audits stopped being a fire drill."
+    },
+    {
+        "id": 6,
+        "name": "Gabriel Ortiz",
+        "role": "Head of Product, Launchy",
+        "avatar": "https://placehold.co/80x80?text=G",
+        "photo": "https://images.unsplash.com/photo-1485893086445-ed75865251e0?auto=format&fit=crop&w=600&q=80",
+        "feedback": "Our beta users feel confident because every deploy note and rollback button lives in one timeline."
+    }
+]

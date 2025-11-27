@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Unified Dev Console",
+    "description": "Track builds, deployments, and observability widgets without leaving one clean dashboard.",
+    "images": [
+      "https://placehold.co/300x180?text=Console",
+      "https://placehold.co/300x180?text=Deploy",
+      "https://placehold.co/300x180?text=Insights"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Workflow Automations",
+    "description": "Trigger tests, preview branches, and push to production as soon as pull requests land.",
+    "images": [
+      "https://placehold.co/300x180?text=Tests",
+      "https://placehold.co/300x180?text=Preview"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Team Visibility",
+    "description": "Lightweight reports and health checks help the whole team understand velocity at a glance.",
+    "images": [
+      "https://placehold.co/300x180?text=Reports",
+      "https://placehold.co/300x180?text=Health",
+      "https://placehold.co/300x180?text=Pulse"
+    ]
+  }
+]
+
