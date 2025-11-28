@@ -47,12 +47,14 @@ function Testimonials() {
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-6xl px-4">
-        <div className="mb-10 text-center text-slate-900">
-          <p className="text-sm uppercase tracking-[0.3em] text-teal-600">
+        <div className="mb-6 sm:mb-10 text-center text-slate-900">
+          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-teal-600">
             Voices
           </p>
-          <h2 className="mt-2 text-3xl font-semibold">Stories from builders</h2>
-          <p className="mt-4 text-slate-600">
+          <h2 className="mt-2 text-2xl sm:text-3xl font-semibold">
+            Stories from builders
+          </h2>
+          <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-600 px-4">
             Hover a portrait to flip the card and read how DevFlow fits their
             workflow.
           </p>
@@ -66,7 +68,7 @@ function Testimonials() {
           {marqueeItems.map((person, index) => (
             <article
               key={`${person.id}-${index}`}
-              className="group relative h-[20rem] w-[22rem] shrink-0 cursor-pointer transition-transform duration-500 even:translate-y-6 odd:-translate-y-4"
+              className="group relative h-[18rem] w-[18rem] sm:h-[20rem] sm:w-[22rem] shrink-0 cursor-pointer transition-transform duration-500 even:translate-y-4 sm:even:translate-y-6 odd:-translate-y-2 sm:odd:-translate-y-4"
             >
               <div className="relative h-full w-full rounded-xl border border-slate-100 bg-white shadow-lg transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
                 <div className="absolute inset-0 overflow-hidden rounded-xl bg-slate-900/80 text-white [backface-visibility:hidden]">
@@ -83,11 +85,11 @@ function Testimonials() {
                     <p className="text-sm text-slate-200">{person.role}</p>
                   </div>
                 </div>
-                <div className="absolute inset-0 flex h-full flex-col justify-between rounded-xl border border-slate-100 bg-white p-6 text-slate-900 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-                  <p className="text-lg font-semibold leading-tight text-slate-900">
-                    “{person.feedback}”
+                <div className="absolute inset-0 flex h-full flex-col justify-between rounded-xl border border-slate-100 bg-white p-4 sm:p-6 text-slate-900 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <p className="text-sm sm:text-base md:text-lg font-semibold leading-tight text-slate-900">
+                    "{person.feedback}"
                   </p>
-                  <div className="text-sm text-slate-500">
+                  <div className="text-xs sm:text-sm text-slate-500">
                     <p className="font-semibold text-slate-800">
                       {person.name}
                     </p>

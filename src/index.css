@@ -19,7 +19,14 @@ img {
 }
 
 .animate-marquee {
-  animation: marquee 18s linear infinite;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-logo-scroll {
+  animation: logo-scroll 30s linear infinite;
+  will-change: transform;
+  display: inline-flex;
+  white-space: nowrap;
 }
 
 .animate-marquee-slow {
@@ -40,6 +47,15 @@ img {
     transform: translateX(0);
   }
   100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
     transform: translateX(-50%);
   }
 }
@@ -70,5 +86,41 @@ img {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Vertical slot machine scrolling animations for icons */
+/* All start at the same time (no delay) but move at different speeds */
+.animate-icon-scroll-1 {
+  animation: icon-scroll-vertical 2.5s linear infinite;
+  animation-delay: 0s;
+}
+
+.animate-icon-scroll-2 {
+  animation: icon-scroll-vertical 3s linear infinite;
+  animation-delay: 0s;
+}
+
+.animate-icon-scroll-3 {
+  animation: icon-scroll-vertical 2.2s linear infinite;
+  animation-delay: 0s;
+}
+
+.animate-icon-scroll-4 {
+  animation: icon-scroll-vertical 2.8s linear infinite;
+  animation-delay: 0s;
+}
+
+.animate-icon-scroll-5 {
+  animation: icon-scroll-vertical 3.2s linear infinite;
+  animation-delay: 0s;
+}
+
+@keyframes icon-scroll-vertical {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-120px); /* Scroll by 5 icon heights (5 * 24px = 120px) to show next set of 5 icons */
   }
 }

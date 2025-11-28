@@ -164,11 +164,11 @@ function Hero() {
           {/* Arrow Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
+            className="absolute left-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:p-2"
             aria-label="Previous card"
           >
             <svg
-              className="h-4 w-4 text-slate-600"
+              className="h-3 w-3 text-slate-600 sm:h-4 sm:w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -184,11 +184,11 @@ function Hero() {
 
           <button
             onClick={handleNext}
-            className="absolute right-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110"
+            className="absolute right-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:p-2"
             aria-label="Next card"
           >
             <svg
-              className="h-4 w-4 text-slate-600"
+              className="h-3 w-3 text-slate-600 sm:h-4 sm:w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -214,73 +214,74 @@ function Hero() {
                 return (
                   <article
                     key={`${currentCard.id}-${index}`}
-                    className="relative flex h-[85vh] w-full shrink-0 items-center gap-12 rounded-3xl p-12"
+                    className="relative flex min-h-[85vh] w-full shrink-0 flex-col items-center gap-8 rounded-3xl p-6 sm:flex-row sm:gap-12 sm:p-12"
                   >
                     {/* Left Side - Text Content */}
-                    <div className="flex-1 space-y-6">
-                      <div className="space-y-3">
-                        <h1 className="text-4xl font-bold text-blue-600 lg:text-5xl">
+                    <div className="flex-1 space-y-4 sm:space-y-6">
+                      <div className="space-y-2 sm:space-y-3">
+                        <h1 className="text-2xl font-bold text-blue-600 sm:text-4xl lg:text-5xl">
                           {currentCard.headline}
                         </h1>
-                        <p className="text-xl text-slate-700">
+                        <p className="text-lg sm:text-xl text-slate-700">
                           {currentCard.subheadline}
                         </p>
                       </div>
-                      <p className="text-sm text-slate-600">
+                      <p className="text-xs sm:text-sm text-slate-600">
                         {currentCard.features}
                       </p>
-                      <div className="flex items-center gap-4">
-                        <button className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700">
-                          Sign Up Now →
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+                        <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 sm:px-6 sm:py-3">
+                          <span className="hidden sm:inline">Sign Up Now →</span>
+                          <span className="sm:hidden">Sign Up Now</span>
                         </button>
-                        <button className="font-semibold text-blue-600 transition hover:text-blue-700">
+                        <button className="text-sm font-semibold text-blue-600 transition hover:text-blue-700 sm:text-base">
                           Know More
                         </button>
                       </div>
                     </div>
 
                     {/* Right Side - Person Image & Device */}
-                    <div className="relative flex-shrink-0">
+                    <div className="relative flex-shrink-0 w-full sm:w-auto">
                       {/* Large Geometric Shape Background */}
                       <div
-                        className="absolute -right-16 -top-16 h-[500px] w-[500px] rotate-12 bg-blue-600 opacity-15"
+                        className="absolute -right-8 -top-8 h-[300px] w-[300px] rotate-12 bg-blue-600 opacity-15 sm:-right-16 sm:-top-16 sm:h-[500px] sm:w-[500px]"
                         style={{
                           clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
                         }}
                       />
                       <div className="relative z-10">
                         {/* Person Image */}
-                        <div className="relative">
+                        <div className="relative mx-auto sm:mx-0">
                           <img
                             src={currentCard.personPhoto}
                             alt={currentCard.personName}
-                            className="h-80 w-64 rounded-2xl object-cover shadow-2xl"
+                            className="h-64 w-48 rounded-2xl object-cover shadow-2xl sm:h-80 sm:w-64"
                           />
                           {/* Badge on person */}
-                          <div className="absolute -left-4 top-4 rounded-lg bg-yellow-400 px-3 py-2 text-xs font-bold text-slate-900 shadow-lg">
+                          <div className="absolute -left-2 top-2 rounded-lg bg-yellow-400 px-2 py-1 text-[10px] font-bold text-slate-900 shadow-lg sm:-left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-xs">
                             <div>{currentCard.companyName}</div>
-                            <div className="text-[10px]">
+                            <div className="text-[8px] sm:text-[10px]">
                               {currentCard.personName}
                             </div>
                           </div>
                         </div>
 
                         {/* Device/Visual Element - positioned over geometric shape */}
-                        <div className="absolute -bottom-6 -right-6 z-20 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 p-4 shadow-xl">
-                          <div className="mb-1 text-xs font-semibold uppercase tracking-wider text-purple-700">
+                        <div className="absolute -bottom-4 -right-4 z-20 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 p-2 shadow-xl sm:-bottom-6 sm:-right-6 sm:p-4">
+                          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-purple-700 sm:text-xs">
                             DevFlow
                           </div>
-                          <div className="text-[10px] text-slate-600">
+                          <div className="text-[8px] sm:text-[10px] text-slate-600">
                             {currentCard.poweredBy}
                           </div>
                         </div>
 
                         {/* Person Title - positioned below image */}
-                        <div className="absolute -bottom-16 left-0 z-10 whitespace-nowrap">
-                          <p className="text-xs font-semibold text-slate-800 drop-shadow-sm">
+                        <div className="absolute -bottom-12 left-0 z-10 sm:-bottom-16">
+                          <p className="text-[10px] font-semibold text-slate-800 drop-shadow-sm sm:text-xs">
                             {currentCard.personTitle}
                           </p>
-                          <p className="text-4xl font-bold italic text-slate-900 drop-shadow-sm">
+                          <p className="text-2xl font-bold italic text-slate-900 drop-shadow-sm sm:text-4xl">
                             {currentCard.personName}
                           </p>
                         </div>
@@ -335,7 +336,7 @@ function Hero() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <button className="flex items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-700 sm:px-4 sm:py-2.5 sm:text-sm">
+              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
                 <svg
                   className="h-4 w-4 shrink-0"
                   fill="none"
@@ -349,12 +350,12 @@ function Hero() {
                     d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                   />
                 </svg>
-                <span className="whitespace-nowrap">Accept Payments</span>
+                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Accept Payments</span>
               </button>
 
-              <button className="flex items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-700 sm:px-4 sm:py-2.5 sm:text-sm">
+              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
                 <svg
-                  className="h-4 w-4 shrink-0"
+                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -366,12 +367,12 @@ function Hero() {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>
-                <span className="whitespace-nowrap">Make Payouts</span>
+                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Make Payouts</span>
               </button>
 
-              <button className="flex items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-700 sm:px-4 sm:py-2.5 sm:text-sm">
+              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
                 <svg
-                  className="h-4 w-4 shrink-0"
+                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -383,12 +384,12 @@ function Hero() {
                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                   />
                 </svg>
-                <span className="whitespace-nowrap">Start Development</span>
+                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Start Development</span>
               </button>
 
-              <button className="flex items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-700 sm:px-4 sm:py-2.5 sm:text-sm">
+              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
                 <svg
-                  className="h-4 w-4 shrink-0"
+                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -400,10 +401,10 @@ function Hero() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span className="whitespace-nowrap">Get Started</span>
+                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Get Started</span>
               </button>
 
-              <button className="flex items-center gap-2 rounded-full bg-blue-600 px-3 py-2 text-xs font-medium text-white transition hover:bg-blue-700 sm:px-4 sm:py-2.5 sm:text-sm">
+              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
                 <svg
                   className="h-4 w-4 shrink-0"
                   fill="none"
@@ -417,7 +418,7 @@ function Hero() {
                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                   />
                 </svg>
-                <span className="whitespace-nowrap">Something else?</span>
+                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Something else?</span>
               </button>
             </div>
           </div>

@@ -1,22 +1,23 @@
 function CodeEditor({ title, language, snippet }) {
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white shadow-lg">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 bg-slate-50 px-5 py-3.5">
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-semibold text-slate-900">
+    <div className="rounded-xl sm:rounded-2xl border border-slate-200 bg-white shadow-lg overflow-hidden">
+      {/* Header */}
+      <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-slate-100 bg-slate-50 px-3 sm:px-4 md:px-5 py-2.5 sm:py-3 md:py-3.5">
+        <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+          <span className="text-xs sm:text-sm font-semibold text-slate-900">
             {language}
           </span>
-          <button className="text-xs text-slate-500 transition hover:text-emerald-500">
+          <button className="text-[10px] sm:text-xs text-slate-500 transition hover:text-emerald-500 whitespace-nowrap">
             change language &gt;
           </button>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             aria-label="Copy snippet"
-            className="rounded p-1.5 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700"
+            className="rounded p-1 sm:p-1.5 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700"
           >
             <svg
-              className="h-4 w-4"
+              className="h-3 w-3 sm:h-4 sm:w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -29,13 +30,13 @@ function CodeEditor({ title, language, snippet }) {
               />
             </svg>
           </button>
-          <div className="h-2 w-2 rounded-full bg-orange-400"></div>
+          <div className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-orange-400"></div>
           <button
             aria-label="Expand snippet"
-            className="rounded p-1.5 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700"
+            className="rounded p-1 sm:p-1.5 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700"
           >
             <svg
-              className="h-4 w-4"
+              className="h-3 w-3 sm:h-4 sm:w-4"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -50,15 +51,17 @@ function CodeEditor({ title, language, snippet }) {
           </button>
         </div>
       </div>
-      <div className="rounded-b-2xl bg-slate-900 px-6 py-5 font-mono text-sm">
+
+      {/* Code Content */}
+      <div className="rounded-b-xl sm:rounded-b-2xl bg-slate-900 px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-5 font-mono">
         <pre className="overflow-x-auto">
-          <code className="text-slate-100">
+          <code className="text-slate-100 text-xs sm:text-sm">
             {snippet.map((line, index) => (
-              <div key={index} className="flex gap-6">
-                <span className="w-6 shrink-0 text-right text-xs text-slate-500">
+              <div key={index} className="flex gap-3 sm:gap-4 md:gap-6 min-w-max">
+                <span className="w-5 sm:w-6 shrink-0 text-right text-[10px] sm:text-xs text-slate-500 select-none">
                   {index + 1}
                 </span>
-                <span className="flex-1">{line}</span>
+                <span className="flex-1 whitespace-pre">{line}</span>
               </div>
             ))}
           </code>

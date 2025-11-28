@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "Instant Deploy",
+    "icon": "fast-forward",
+    "mainText": "Deploy to production in under 30 seconds, achieve 99.9% uptime, and scale automatically without any infrastructure management.",
+    "highlightedText": ["Deploy to production in under 30 seconds", "99.9% uptime"],
+    "description": "Ship faster with zero-downtime deployments and automatic scaling for modern applications",
+    "signUpText": "Sign Up",
+    "knowMoreText": "Know More"
+  },
+  {
+    "id": 2,
+    "title": "Smart Workflows",
+    "icon": "workflow",
+    "mainText": "Experience 5X faster CI/CD pipelines, reduce build times by 80%, and automate your entire development workflow with zero configuration.",
+    "highlightedText": ["Experience 5X faster CI/CD pipelines", "80%"],
+    "description": "Automate your development lifecycle with intelligent workflows that adapt to your team's needs",
+    "signUpText": "Sign Up",
+    "knowMoreText": "Know More"
+  },
+  {
+    "id": 3,
+    "title": "Unified Dashboard",
+    "icon": "dashboard",
+    "mainText": "Monitor all your services in one place, get real-time insights, and track performance metrics across your entire stack.",
+    "highlightedText": ["Monitor all your services in one place", "real-time insights"],
+    "description": "Get complete visibility into your infrastructure with a unified observability platform",
+    "signUpText": "Sign Up",
+    "knowMoreText": "Know More"
+  },
+  {
+    "id": 4,
+    "title": "Team Collaboration",
+    "icon": "team",
+    "mainText": "Enable seamless collaboration with 10+ integrations, share insights instantly, and boost team productivity by 40%.",
+    "highlightedText": ["10+ integrations", "40%"],
+    "description": "Work together effortlessly with tools designed for modern development teams",
+    "signUpText": "Sign Up",
+    "knowMoreText": "Know More"
+  }
+]
+

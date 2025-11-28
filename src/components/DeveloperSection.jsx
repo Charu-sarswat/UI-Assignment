@@ -77,12 +77,13 @@ function DeveloperSection() {
 
   return (
     <section className="bg-linear-to-b from-white via-slate-50 to-slate-100 text-slate-900">
-      <div className="border-b border-emerald-200/60 bg-white py-4 overflow-hidden">
-        <div className="flex animate-marquee-slow gap-8 whitespace-nowrap text-xs uppercase tracking-[0.4em] text-emerald-500">
+      {/* Marquee Section */}
+      <div className="border-b border-emerald-200/60 bg-white py-3 sm:py-4 overflow-hidden">
+        <div className="flex animate-marquee-slow gap-4 sm:gap-6 md:gap-8 whitespace-nowrap text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] text-emerald-500">
           {marqueeItems.map((lang, index) => (
             <span
               key={`${lang}-${index}`}
-              className="flex items-center gap-3 whitespace-nowrap shrink-0"
+              className="flex items-center gap-2 sm:gap-3 whitespace-nowrap shrink-0"
             >
               {lang}
               <span className="text-emerald-200">•</span>
@@ -90,49 +91,67 @@ function DeveloperSection() {
           ))}
         </div>
       </div>
-      <div className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mb-12 space-y-4">
-          <h2 className="text-4xl font-semibold leading-tight text-slate-900">
+
+      {/* Main Content */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+        {/* Header Section */}
+        <div className="mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-slate-900">
             DevFlow is built{" "}
             <span className="text-emerald-500">
               {"<"}for developers by developers{">"}
             </span>
           </h2>
-          <p className="text-slate-600">
+          <p className="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed">
             Start with the CLI, ship through the dashboard, or automate entirely
             with APIs. Pick the workflow your team loves; DevFlow keeps the
             boring bits scripted and the docs nearby.
           </p>
         </div>
-        <div className="mb-12 grid gap-6 md:grid-cols-3">
+
+        {/* Highlights Grid */}
+        <div className="mb-8 sm:mb-10 md:mb-12 grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map((item) => (
-            <article key={item.title} className="p-4 text-slate-700">
-              <div className="mb-4 text-slate-900">{item.icon}</div>
-              <p className="text-lg font-semibold text-slate-900">
+            <article
+              key={item.title}
+              className="p-3 sm:p-4 md:p-5 text-slate-700 rounded-lg hover:bg-white/50 transition-colors"
+            >
+              <div className="mb-3 sm:mb-4 text-slate-900">
+                <div className="h-5 w-5 sm:h-6 sm:w-6">
+                  {item.icon}
+                </div>
+              </div>
+              <p className="text-base sm:text-lg font-semibold text-slate-900 mb-2">
                 {item.title}
               </p>
-              <p className="mt-2 text-sm text-slate-600">{item.copy}</p>
-              <button className="mt-4 text-sm font-semibold text-slate-900 transition hover:text-emerald-500">
+              <p className="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                {item.copy}
+              </p>
+              <button className="mt-3 sm:mt-4 text-xs sm:text-sm font-semibold text-slate-900 transition hover:text-emerald-500">
                 View Docs →
               </button>
             </article>
           ))}
         </div>
-        <div className="grid gap-10 lg:grid-cols-[1fr,1.2fr] lg:items-start">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-semibold text-slate-900">
+
+        {/* Code Editor Section */}
+        <div className="grid gap-4 sm:gap-6 md:gap-8 lg:gap-10 md:grid-cols-[1fr,1.2fr] md:items-start">
+          <div className="space-y-2 sm:space-y-3 md:space-y-4">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-slate-900">
               Try it out for yourself
             </h3>
-            <p className="text-slate-600">
+            <p className="text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed">
               Run a sample request and inspect the payload. Switch languages at
               any time to see familiar snippets for your stack.
             </p>
           </div>
-          <CodeEditor
-            title={codeSnippet.title}
-            language={codeSnippet.language}
-            snippet={codeSnippet.snippet}
-          />
+          <div>
+            <CodeEditor
+              title={codeSnippet.title}
+              language={codeSnippet.language}
+              snippet={codeSnippet.snippet}
+            />
+          </div>
         </div>
       </div>
     </section>
