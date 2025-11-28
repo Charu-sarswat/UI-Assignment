@@ -157,14 +157,25 @@ function Hero() {
     }, 6000);
   };
 
+  const handleIndicatorClick = (index) => {
+    if (index === activeIndex) return;
+    autoScrollRef.current = false;
+    const isForward = index > activeIndex;
+    scrollToIndex(index, isForward, activeIndex);
+    setActiveIndex(index);
+    setTimeout(() => {
+      autoScrollRef.current = true;
+    }, 6000);
+  };
+
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-sky-50 via-white to-white">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-sky-50 via-white to-white px-4 pb-8 sm:px-6 sm:pb-12">
       <div className="relative w-full max-w-[92%] mx-auto">
-        <div className="relative overflow-hidden">
+        <div className="relative">
           {/* Arrow Buttons */}
           <button
             onClick={handlePrev}
-            className="absolute left-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:p-2"
+            className="absolute -left-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/60 bg-white/80 p-1.5 backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:-left-6 sm:p-2"
             aria-label="Previous card"
           >
             <svg
@@ -184,7 +195,7 @@ function Hero() {
 
           <button
             onClick={handleNext}
-            className="absolute right-1 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow-lg backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:p-2"
+            className="absolute -right-4 top-1/2 z-30 -translate-y-1/2 rounded-full border border-white/60 bg-white/80 p-1.5 backdrop-blur-sm transition hover:bg-white hover:scale-110 sm:-right-6 sm:p-2"
             aria-label="Next card"
           >
             <svg
@@ -211,40 +222,101 @@ function Hero() {
               {allCards.map((card, index) => {
                 const cardIndex = index % heroCards.length;
                 const currentCard = heroCards[cardIndex];
+                const headlineParts = currentCard.headline.trim().split(" ");
+                const accentWord =
+                  headlineParts.length > 1 ? headlineParts.pop() : null;
+                const baseHeadline =
+                  headlineParts.length > 0
+                    ? headlineParts.join(" ")
+                    : currentCard.headline;
+                const featureBadges = currentCard.features
+                  .split("|")
+                  .map((feature) => feature.trim())
+                  .filter(Boolean);
                 return (
                   <article
                     key={`${currentCard.id}-${index}`}
-                    className="relative flex min-h-[85vh] w-full shrink-0 flex-col items-center gap-8 rounded-3xl p-6 sm:flex-row sm:gap-12 sm:p-12"
+                    className="relative flex min-h-[70vh] w-full shrink-0 flex-col items-center gap-6 rounded-3xl p-4 sm:min-h-[85vh] sm:flex-row sm:gap-8 sm:p-8 md:gap-12 md:p-12"
                   >
                     {/* Left Side - Text Content */}
-                    <div className="flex-1 space-y-4 sm:space-y-6">
+                    <div className="flex-1 w-full space-y-4 sm:space-y-5 md:space-y-6">
+                      {/* Company badge */}
+                      <div className="inline-flex items-center gap-2 text-slate-500">
+                        <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500 sm:text-sm">
+                          {currentCard.companyName}
+                        </span>
+                        <span className="h-px w-16 bg-slate-200 sm:w-20" />
+                      </div>
+
+                      {/* Headline */}
                       <div className="space-y-2 sm:space-y-3">
-                        <h1 className="text-2xl font-bold text-blue-600 sm:text-4xl lg:text-5xl">
-                          {currentCard.headline}
+                        <h1 className="text-2xl font-bold leading-tight text-slate-900 sm:text-4xl md:text-5xl lg:text-6xl">
+                          {baseHeadline}
+                          {accentWord && (
+                            <span className="block text-blue-600">
+                              {accentWord}
+                            </span>
+                          )}
                         </h1>
-                        <p className="text-lg sm:text-xl text-slate-700">
+                        <p className="text-base text-slate-600 sm:text-lg md:text-xl">
                           {currentCard.subheadline}
                         </p>
                       </div>
-                      <p className="text-xs sm:text-sm text-slate-600">
-                        {currentCard.features}
-                      </p>
+
+                      {/* Feature badges */}
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+                        {featureBadges.map((feature) => (
+                          <span
+                            key={feature}
+                            className="inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-[11px] font-medium text-blue-700 sm:px-3.5 sm:py-1.5 sm:text-sm"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Action Buttons */}
                       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
-                        <button className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700 sm:px-6 sm:py-3">
-                          <span className="hidden sm:inline">Sign Up Now →</span>
-                          <span className="sm:hidden">Sign Up Now</span>
+                        <button className="group inline-flex items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700 sm:text-base">
+                          <span>Sign Up Now</span>
+                          <svg
+                            className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 7l5 5m0 0l-5 5m5-5H6"
+                            />
+                          </svg>
                         </button>
-                        <button className="text-sm font-semibold text-blue-600 transition hover:text-blue-700 sm:text-base">
+                        <button className="inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-700 sm:text-base">
                           Know More
+                          <svg
+                            className="ml-1.5 h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
                         </button>
                       </div>
                     </div>
 
                     {/* Right Side - Person Image & Device */}
-                    <div className="relative flex-shrink-0 w-full sm:w-auto">
+                    <div className="relative flex-shrink-0 w-full flex justify-center sm:w-auto sm:justify-start">
                       {/* Large Geometric Shape Background */}
                       <div
-                        className="absolute -right-8 -top-8 h-[300px] w-[300px] rotate-12 bg-blue-600 opacity-15 sm:-right-16 sm:-top-16 sm:h-[500px] sm:w-[500px]"
+                        className="absolute left-1/2 -translate-x-1/2 -top-6 h-[260px] w-[260px] rotate-12 bg-blue-600 opacity-15 sm:left-auto sm:translate-x-0 sm:-right-10 sm:-top-10 sm:h-[380px] sm:w-[380px] md:-right-16 md:-top-16 md:h-[560px] md:w-[560px]"
                         style={{
                           clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
                         }}
@@ -255,33 +327,33 @@ function Hero() {
                           <img
                             src={currentCard.personPhoto}
                             alt={currentCard.personName}
-                            className="h-64 w-48 rounded-2xl object-cover shadow-2xl sm:h-80 sm:w-64"
+                            className="h-56 w-40 rounded-2xl object-cover sm:h-80 sm:w-56 md:h-[420px] md:w-72"
                           />
                           {/* Badge on person */}
-                          <div className="absolute -left-2 top-2 rounded-lg bg-yellow-400 px-2 py-1 text-[10px] font-bold text-slate-900 shadow-lg sm:-left-4 sm:top-4 sm:px-3 sm:py-2 sm:text-xs">
+                          <div className="absolute -left-1 top-1 rounded-lg bg-yellow-400 px-1.5 py-0.5 text-[9px] font-bold text-slate-900 sm:-left-2 sm:top-2 sm:px-2 sm:py-1 sm:text-[10px] md:-left-4 md:top-4 md:px-3 md:py-2 md:text-xs">
                             <div>{currentCard.companyName}</div>
-                            <div className="text-[8px] sm:text-[10px]">
+                            <div className="text-[7px] sm:text-[8px] md:text-[10px]">
                               {currentCard.personName}
                             </div>
                           </div>
                         </div>
 
                         {/* Device/Visual Element - positioned over geometric shape */}
-                        <div className="absolute -bottom-4 -right-4 z-20 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 p-2 shadow-xl sm:-bottom-6 sm:-right-6 sm:p-4">
-                          <div className="mb-1 text-[10px] font-semibold uppercase tracking-wider text-purple-700 sm:text-xs">
+                        <div className="absolute -bottom-2 -right-2 z-20 rounded-xl bg-gradient-to-br from-purple-50 to-indigo-50 border border-purple-200 p-1.5 sm:-bottom-4 sm:-right-4 sm:p-2 md:-bottom-6 md:-right-6 md:p-4">
+                          <div className="mb-0.5 text-[9px] font-semibold uppercase tracking-wider text-purple-700 sm:text-[10px] md:text-xs">
                             DevFlow
                           </div>
-                          <div className="text-[8px] sm:text-[10px] text-slate-600">
+                          <div className="text-[7px] sm:text-[8px] md:text-[10px] text-slate-600">
                             {currentCard.poweredBy}
                           </div>
                         </div>
 
                         {/* Person Title - positioned below image */}
-                        <div className="absolute -bottom-12 left-0 z-10 sm:-bottom-16">
-                          <p className="text-[10px] font-semibold text-slate-800 drop-shadow-sm sm:text-xs">
+                        <div className="absolute -bottom-10 -left-6 z-10 text-left sm:-bottom-12 sm:-left-4 md:-bottom-16 md:-left-6">
+                          <p className="text-[9px] font-semibold text-slate-800 sm:text-[10px] md:text-xs">
                             {currentCard.personTitle}
                           </p>
-                          <p className="text-2xl font-bold italic text-slate-900 drop-shadow-sm sm:text-4xl">
+                          <p className="text-xl font-bold italic text-slate-900 sm:text-2xl md:text-4xl">
                             {currentCard.personName}
                           </p>
                         </div>
@@ -294,13 +366,29 @@ function Hero() {
           </div>
         </div>
 
+        {/* Mobile Indicators */}
+        <div className="mt-6 flex justify-center gap-2 sm:hidden">
+          {heroCards.map((card, index) => (
+            <button
+              key={`${card.id}-indicator`}
+              onClick={() => handleIndicatorClick(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-2.5 rounded-full transition-all ${
+                activeIndex === index
+                  ? "w-7 bg-slate-700"
+                  : "w-2.5 bg-slate-300"
+              }`}
+            />
+          ))}
+        </div>
+
         {/* Bottom Action Bar */}
-        <div className="mt-8 mb-4 w-full">
-          <div className="flex flex-col gap-4 rounded-2xl bg-white px-4 py-4 shadow-lg sm:flex-row sm:items-center sm:px-6">
+        <div className="mt-8 mb-4 w-full hidden md:block">
+          <div className="flex flex-row items-center gap-2 rounded-2xl bg-white px-3 py-3 shadow-lg sm:px-4 sm:gap-3">
             {/* Search Input */}
-            <div className="flex flex-1 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-4 py-2.5">
+            <div className="flex flex-1 items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 min-w-0">
               <svg
-                className="h-5 w-5 shrink-0 text-slate-400"
+                className="h-4 w-4 shrink-0 text-slate-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -315,11 +403,11 @@ function Hero() {
               <input
                 type="text"
                 placeholder="Start your search"
-                className="flex-1 bg-transparent text-sm text-slate-600 placeholder-slate-400 outline-none"
+                className="flex-1 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none min-w-0"
               />
               <button className="shrink-0 text-slate-400 hover:text-slate-600">
                 <svg
-                  className="h-4 w-4"
+                  className="h-3 w-3"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -335,10 +423,10 @@ function Hero() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
+            <div className="flex flex-nowrap items-center gap-1.5 shrink-0">
+              <button className="flex items-center gap-1 rounded-full bg-blue-600 px-2 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700">
                 <svg
-                  className="h-4 w-4 shrink-0"
+                  className="h-3 w-3 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -350,12 +438,12 @@ function Hero() {
                     d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Accept Payments</span>
+                <span className="whitespace-nowrap">Accept Payments</span>
               </button>
 
-              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
+              <button className="flex items-center gap-1 rounded-full bg-blue-600 px-2 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700">
                 <svg
-                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
+                  className="h-3 w-3 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -367,12 +455,12 @@ function Hero() {
                     d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Make Payouts</span>
+                <span className="whitespace-nowrap">Make Payouts</span>
               </button>
 
-              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
+              <button className="flex items-center gap-1 rounded-full bg-blue-600 px-2 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700">
                 <svg
-                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
+                  className="h-3 w-3 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -384,12 +472,12 @@ function Hero() {
                     d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Start Development</span>
+                <span className="whitespace-nowrap">Start Development</span>
               </button>
 
-              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
+              <button className="flex items-center gap-1 rounded-full bg-blue-600 px-2 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700">
                 <svg
-                  className="h-3 w-3 shrink-0 sm:h-4 sm:w-4"
+                  className="h-3 w-3 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -401,12 +489,12 @@ function Hero() {
                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Get Started</span>
+                <span className="whitespace-nowrap">Get Started</span>
               </button>
 
-              <button className="flex items-center gap-1.5 rounded-full bg-blue-600 px-2.5 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700 sm:gap-2 sm:px-3 sm:py-2 sm:text-xs md:px-4 md:py-2.5 md:text-sm">
+              <button className="flex items-center gap-1 rounded-full bg-blue-600 px-2 py-1.5 text-[10px] font-medium text-white transition hover:bg-blue-700">
                 <svg
-                  className="h-4 w-4 shrink-0"
+                  className="h-3 w-3 shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -418,7 +506,7 @@ function Hero() {
                     d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                   />
                 </svg>
-                <span className="whitespace-nowrap text-[10px] sm:text-xs md:text-sm">Something else?</span>
+                <span className="whitespace-nowrap">Something else?</span>
               </button>
             </div>
           </div>

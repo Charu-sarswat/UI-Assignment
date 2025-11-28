@@ -1,31 +1,92 @@
 [
   {
     "id": 1,
-    "title": "Unified Dev Console",
-    "description": "Track builds, deployments, and observability widgets without leaving one clean dashboard.",
-    "images": [
-      "https://placehold.co/300x180?text=Console",
-      "https://placehold.co/300x180?text=Deploy",
-      "https://placehold.co/300x180?text=Insights"
+    "title": "Start Business Banking",
+    "items": [
+      {
+        "id": 1,
+        "title": "Current Account",
+        "description": "Automate banking with India's top current account for startups",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 2,
+        "title": "Escrow Account",
+        "description": "Automate Escrow money transfers with total safety and compliance",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 3,
+        "title": "Forex Management",
+        "description": "Get effortless foreign funding management with expert support",
+        "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 4,
+        "title": "Accounting Integration",
+        "description": "Easy integrations with your accounting software",
+        "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop"
+      }
     ]
   },
   {
     "id": 2,
-    "title": "Workflow Automations",
-    "description": "Trigger tests, preview branches, and push to production as soon as pull requests land.",
-    "images": [
-      "https://placehold.co/300x180?text=Tests",
-      "https://placehold.co/300x180?text=Preview"
+    "title": "Developer Tools",
+    "items": [
+      {
+        "id": 1,
+        "title": "Code Editor",
+        "description": "Powerful code editor with syntax highlighting and auto-completion",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 2,
+        "title": "Version Control",
+        "description": "Seamless Git integration for managing your codebase efficiently",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 3,
+        "title": "CI/CD Pipeline",
+        "description": "Automated testing and deployment workflows for faster releases",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 4,
+        "title": "API Management",
+        "description": "Build, test, and manage APIs with comprehensive tools and monitoring",
+        "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
+      }
     ]
   },
   {
     "id": 3,
-    "title": "Team Visibility",
-    "description": "Lightweight reports and health checks help the whole team understand velocity at a glance.",
-    "images": [
-      "https://placehold.co/300x180?text=Reports",
-      "https://placehold.co/300x180?text=Health",
-      "https://placehold.co/300x180?text=Pulse"
+    "title": "Team Collaboration",
+    "items": [
+      {
+        "id": 1,
+        "title": "Project Management",
+        "description": "Organize tasks and track progress with intuitive project boards",
+        "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 2,
+        "title": "Team Chat",
+        "description": "Real-time communication and collaboration for your entire team",
+        "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 3,
+        "title": "Documentation",
+        "description": "Create and share knowledge with integrated documentation tools",
+        "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop"
+      },
+      {
+        "id": 4,
+        "title": "Analytics Dashboard",
+        "description": "Track team performance and project metrics with detailed insights",
+        "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
+      }
     ]
   }
 ]

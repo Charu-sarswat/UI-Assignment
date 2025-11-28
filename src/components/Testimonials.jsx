@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import testimonials from "../data/testimonials.json";
 
 function Testimonials() {
@@ -6,6 +6,7 @@ function Testimonials() {
   const marqueeItems = [...testimonials, ...testimonials];
   const scrollRef = useRef(null);
   const positionRef = useRef(0);
+  const [flippedCards, setFlippedCards] = useState(new Set());
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -44,6 +45,18 @@ function Testimonials() {
     };
   }, []);
 
+  const handleCardClick = (cardId) => {
+    setFlippedCards((prev) => {
+      const newSet = new Set(prev);
+      if (newSet.has(cardId)) {
+        newSet.delete(cardId);
+      } else {
+        newSet.add(cardId);
+      }
+      return newSet;
+    });
+  };
+
   return (
     <section className="bg-white py-10">
       <div className="mx-auto max-w-6xl px-4">
@@ -55,7 +68,7 @@ function Testimonials() {
             Stories from builders
           </h2>
           <p className="mt-3 sm:mt-4 text-sm sm:text-base text-slate-600 px-4">
-            Hover a portrait to flip the card and read how DevFlow fits their
+            Hover or click a portrait to flip the card and read how DevFlow fits their
             workflow.
           </p>
         </div>
@@ -65,12 +78,16 @@ function Testimonials() {
           ref={scrollRef}
           className="flex items-center gap-8 px-6 pb-8 will-change-transform"
         >
-          {marqueeItems.map((person, index) => (
+          {marqueeItems.map((person, index) => {
+            const cardId = `${person.id}-${index}`;
+            const isFlipped = flippedCards.has(cardId);
+            return (
             <article
-              key={`${person.id}-${index}`}
+              key={cardId}
               className="group relative h-[18rem] w-[18rem] sm:h-[20rem] sm:w-[22rem] shrink-0 cursor-pointer transition-transform duration-500 even:translate-y-4 sm:even:translate-y-6 odd:-translate-y-2 sm:odd:-translate-y-4"
+              onClick={() => handleCardClick(cardId)}
             >
-              <div className="relative h-full w-full rounded-xl border border-slate-100 bg-white shadow-lg transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+              <div className={`relative h-full w-full rounded-xl border border-slate-100 bg-white shadow-lg transition-transform duration-500 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : 'group-hover:[transform:rotateY(180deg)]'}`}>
                 <div className="absolute inset-0 overflow-hidden rounded-xl bg-slate-900/80 text-white [backface-visibility:hidden]">
                   <img
                     src={person.photo}
@@ -98,7 +115,8 @@ function Testimonials() {
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
