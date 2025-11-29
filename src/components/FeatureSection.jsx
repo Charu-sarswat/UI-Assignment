@@ -174,18 +174,18 @@ function FeatureSection() {
 
   // Mobile: Simple stacked layout
   if (isMobile) {
-    return (
+  return (
       <section className="bg-gradient-to-b from-white to-slate-50 py-8 sm:py-12 md:py-16">
         <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
           <div className="space-y-8 sm:space-y-10 md:space-y-12">
-            {features.map((feature) => (
-              <FeatureCard key={feature.id} feature={feature} />
-            ))}
-          </div>
+          {features.map((feature) => (
+            <FeatureCard key={feature.id} feature={feature} />
+          ))}
         </div>
-      </section>
-    );
-  }
+      </div>
+    </section>
+  );
+}
 
   // Desktop: Scroll-jacked sticky animation
   return (

@@ -135,7 +135,7 @@ function IndustrySolutions() {
   // Smooth continuous scrolling - no pause/resume for smoother animation
   useEffect(() => {
     // Keep animations running continuously for smoother effect
-    setIsPaused(false);
+      setIsPaused(false);
   }, []);
 
   return (
