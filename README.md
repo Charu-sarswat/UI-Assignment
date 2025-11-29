@@ -2,6 +2,10 @@
 
 A modern, responsive web application built with React and Vite, featuring Razorpay-style animations and a comprehensive developer platform interface.
 
+## 🌐 Live Demo
+
+**Deployed Application:** [https://ui-assignment-razorpay.netlify.app/](https://ui-assignment-razorpay.netlify.app/)
+
 ## 🚀 Setup Instructions
 
 ### Prerequisites
