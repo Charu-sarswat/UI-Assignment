@@ -127,39 +127,30 @@ UI Assignment/
 
 ### Hero Section - Build Faster Together
 ![Hero Section](./screenshots/hero-section.png.png)
-*Hero section featuring "Build Faster Together" headline with call-to-action buttons and feature tags (Team Collaboration, Version Control, Cloud Integration). Includes a stylized portrait with geometric blue and white background.*
 
 ### Features Section - Tools that Feel Simple
 ![Features Section](./screenshots/features-section.png.png)
-*Features section showcasing company logos (Apple, Meta, Netflix, Spotify, Adobe, Samsung, Oracle, Google, Microsoft, Amazon) and the headline "Tools that feel simple, even when they are powerful" with descriptive text.*
 
 ### Developer Tools Section
 ![Developer Tools](./screenshots/developer-tools-section.png.png)
-*Developer Tools section displaying four feature cards: Server Infrastructure, Version Control with Git integration, Cloud Dashboard, and Mobile App Dashboard. Each card shows relevant images and descriptions.*
 
 ### Platform Dropdown Menu
 ![Platform Dropdown](./screenshots/platform-dropdown.png.png)
-*Platform dropdown menu open, showing payment-related features with icons. Left column includes Payment Gateway, Payment Links, Payment Pages, QR Codes, UPI Payments, International Payments, and more. Right column features Magic Checkout, Subscriptions, Instant Settlement, Optimizer, and POS Terminal.*
 
 ### Innovation Section - Instant Deploy & Smart Workflows
 ![Innovation Section](./screenshots/innovation-section.png.png)
-*Innovation section featuring two large feature cards: "Instant Deploy" (30 seconds deployment, 99.9% uptime) and "Smart Workflows" (5X faster CI/CD, 80% reduced build times). Both cards include call-to-action buttons.*
 
 ### Developer Section - For Developers by Developers
 ![Developer Section](./screenshots/developer-section.png.png)
-*Developer section with headline "DevFlow is built <for developers by developers>" highlighted in green. Shows technology scroll (CURL, JAVA, GO, PYTHON, PHP, NODE JS) and three feature blocks: Integrations, API Reference, and Webhooks.*
 
 ### Code Snippet Section
 ![Code Snippet](./screenshots/code-snippet.png.png)
-*Interactive code snippet section titled "Try it out for yourself" with a YAML code editor showing a DevFlow Deploy workflow example. Includes language selector, copy button, and expand options.*
 
 ### Testimonials Section - Stories from Builders
 ![Testimonials Section](./screenshots/testimonials-section.png.png)
-*Testimonials section titled "Stories from builders" with horizontal scrollable profile cards. Features portraits of team members including Luca Rivera (CTO, ByteFoundry), Zoe Kim (Platform PM, Skylink), Nikhil Bose (Founder, Sprout Labs), and others.*
 
 ### Full Page View
 ![Full Page](./screenshots/full-page.png.png)
-*Complete page view showing the header, hero section with "Supercharge your business with DevFlow" call-to-action, testimonials, and comprehensive footer with company links, platform links, support links, and social media icons.*
 
 ## 📝 Available Scripts
 
