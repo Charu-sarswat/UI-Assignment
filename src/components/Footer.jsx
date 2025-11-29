@@ -5,7 +5,7 @@ const supportLinks = ["Status", "Community", "Security", "Contact"]
 function Footer() {
   return (
     <footer className="border-t border-slate-200 bg-white py-6 text-sm text-slate-500 sm:py-8">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-[1400px] px-4">
         <div className="grid grid-cols-2 gap-6 pb-6 sm:grid-cols-4 sm:gap-8 sm:pb-8">
           <div className="col-span-2 sm:col-span-1">
             <p className="text-lg font-semibold text-slate-900 sm:text-xl">DevFlow</p>

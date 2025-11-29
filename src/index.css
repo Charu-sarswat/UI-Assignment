@@ -91,36 +91,104 @@ img {
 
 /* Vertical slot machine scrolling animations for icons */
 /* All start at the same time (no delay) but move at different speeds */
+/* Smooth easing and hardware acceleration for better performance */
+/* All icons synchronized: scroll 2s, pause 1s (3s total cycle) */
 .animate-icon-scroll-1 {
-  animation: icon-scroll-vertical 2.5s linear infinite;
+  animation: icon-scroll-vertical 3s ease-in-out infinite;
   animation-delay: 0s;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-icon-scroll-2 {
-  animation: icon-scroll-vertical 3s linear infinite;
+  animation: icon-scroll-vertical 3s ease-in-out infinite;
   animation-delay: 0s;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-icon-scroll-3 {
-  animation: icon-scroll-vertical 2.2s linear infinite;
+  animation: icon-scroll-vertical 3s ease-in-out infinite;
   animation-delay: 0s;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-icon-scroll-4 {
-  animation: icon-scroll-vertical 2.8s linear infinite;
+  animation: icon-scroll-vertical 3s ease-in-out infinite;
   animation-delay: 0s;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .animate-icon-scroll-5 {
-  animation: icon-scroll-vertical 3.2s linear infinite;
+  animation: icon-scroll-vertical 3s ease-in-out infinite;
   animation-delay: 0s;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 @keyframes icon-scroll-vertical {
   0% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
+  /* Scroll phase: 0% to 66.67% (2 seconds out of 3 second cycle) */
+  /* Scroll through 5 icon heights (5 * 24px = 120px) to show next set of icons */
+  66.67% {
+    transform: translate3d(0, -120px, 0);
+  }
+  /* Pause phase: 66.67% to 100% (1 second pause) - all icons stop together */
   100% {
-    transform: translateY(-120px); /* Scroll by 5 icon heights (5 * 24px = 120px) to show next set of 5 icons */
+    transform: translate3d(0, -120px, 0); /* Stay at same position during pause */
   }
+}
+
+/* Scroll section animations */
+.tool-card,
+.feature-card {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  contain: layout style paint;
+}
+
+/* Ensure cards stay within container bounds */
+.feature-card {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

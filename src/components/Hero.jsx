@@ -35,9 +35,9 @@ function Hero() {
   const scrollToIndex = (index, isForward = true, prevIndex = null) => {
     if (!scrollRef.current) return;
 
-    // Get the actual width of the container (92% of screen)
+    // Get the actual width of the container (max 1400px)
     const containerWidth =
-      scrollRef.current.parentElement?.offsetWidth || window.innerWidth * 0.92;
+      scrollRef.current.parentElement?.offsetWidth || Math.min(window.innerWidth, 1400);
     const cardWidth = containerWidth; // Card is 100% of container width
     const currentPrevIndex = prevIndex !== null ? prevIndex : activeIndex;
 
@@ -170,7 +170,7 @@ function Hero() {
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-sky-50 via-white to-white px-4 pb-8 sm:px-6 sm:pb-12">
-      <div className="relative w-full max-w-[92%] mx-auto">
+      <div className="relative w-full max-w-[1400px] mx-auto">
         <div className="relative">
           {/* Arrow Buttons */}
           <button

@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+import navDropdowns from "../data/navDropdowns.json";
 
 const navLinks = ["Platform", "Workflows", "Docs", "Pricing", "Contact"]
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   // Prevent body scroll when sidebar is open
   useEffect(() => {
@@ -31,7 +33,7 @@ function Header() {
   return (
     <>
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-gradient-to-r from-white via-slate-50 to-sky-50 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 text-slate-900 sm:px-6">
+        <div className="mx-auto flex max-w-[1400px] items-center justify-between px-4 py-3 text-slate-900 sm:px-6">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-600 text-white text-xs sm:text-sm">
               1
@@ -43,16 +45,32 @@ function Header() {
               <p className="text-[10px] sm:text-xs text-slate-500">Developer Platform</p>
             </div>
           </div>
-          <nav className="hidden gap-6 text-sm font-medium text-slate-600 lg:flex">
-            {navLinks.map((link) => (
-              <a
+          <nav className="hidden gap-6 text-sm font-medium text-slate-600 lg:flex relative">
+            {navLinks.map((link) => {
+              const hasDropdown = navDropdowns[link];
+              return (
+                <div
                 key={link}
+                  className="relative"
+                  onMouseEnter={() => hasDropdown && setActiveDropdown(link)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <a
                 href="#"
-                className="border-b-2 border-transparent pb-1 transition hover:border-blue-500 hover:text-blue-600"
+                    className={`border-b-2 pb-1 transition ${
+                      activeDropdown === link
+                        ? "border-blue-600 text-blue-600"
+                        : "border-transparent hover:border-blue-500 hover:text-blue-600"
+                    }`}
               >
                 {link}
               </a>
-            ))}
+                  {hasDropdown && activeDropdown === link && (
+                    <NavDropdown data={navDropdowns[link]} />
+                  )}
+                </div>
+              );
+            })}
           </nav>
           <div className="flex items-center gap-2 sm:gap-3">
             <button
@@ -202,6 +220,80 @@ function Header() {
       </div>
     </>
   )
+}
+
+// NavDropdown Component - Razorpay style
+function NavDropdown({ data }) {
+  return (
+    <div className="absolute top-full left-0 mt-2 w-[800px] bg-white rounded-lg shadow-2xl border border-slate-200 overflow-hidden z-50">
+      <div className="grid grid-cols-2 gap-0">
+        {/* Left Column - Categories */}
+        <div className="p-6 border-r border-slate-100">
+          {data.categories?.map((category, index) => (
+            <div key={index} className={index > 0 ? "mt-8" : ""}>
+              <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-4">
+                {category.title}
+              </h3>
+              <div className="space-y-1">
+                {category.items.map((item, itemIndex) => (
+                  <a
+                    key={itemIndex}
+                    href="#"
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors group"
+                  >
+                    <span className="text-2xl mt-0.5">{item.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                          {item.title}
+                        </h4>
+                        {item.badge && (
+                          <span className="px-2 py-0.5 text-[10px] font-semibold text-blue-600 bg-blue-50 rounded-full">
+                            {item.badge}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-slate-600 mt-0.5">
+                        {item.description}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Right Column */}
+        <div className="p-6 bg-slate-50">
+          {data.rightColumn?.map((item, index) => (
+            <a
+              key={index}
+              href="#"
+              className="flex items-start gap-3 p-3 rounded-lg hover:bg-white transition-colors group mb-2"
+            >
+              <span className="text-2xl mt-0.5">{item.icon}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <h4 className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    {item.title}
+                  </h4>
+                  {item.badge && (
+                    <span className="px-2 py-0.5 text-[10px] font-semibold text-blue-600 bg-blue-50 rounded-full">
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <p className="text-xs text-slate-600 mt-0.5">
+                  {item.description}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Header

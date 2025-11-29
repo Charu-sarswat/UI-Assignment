@@ -59,7 +59,7 @@ function Testimonials() {
 
   return (
     <section className="bg-white py-10">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-[1400px] px-4">
         <div className="mb-6 sm:mb-10 text-center text-slate-900">
           <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-teal-600">
             Voices

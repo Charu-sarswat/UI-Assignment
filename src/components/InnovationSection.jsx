@@ -135,7 +135,7 @@ function InnovationSection() {
 
   return (
     <section className="bg-slate-100 py-12 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6">
         {/* Heading */}
         <h2 className="mb-8 sm:mb-10 md:mb-12 text-center text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900">
           We have innovated at every instance, creating a disruption.

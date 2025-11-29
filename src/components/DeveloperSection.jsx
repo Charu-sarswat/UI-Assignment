@@ -93,7 +93,7 @@ function DeveloperSection() {
       </div>
 
       {/* Main Content */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 py-8 sm:py-12 md:py-16">
         {/* Header Section */}
         <div className="mb-8 sm:mb-10 md:mb-12 space-y-3 sm:space-y-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight text-slate-900">

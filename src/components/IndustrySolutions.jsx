@@ -132,30 +132,15 @@ function IndustrySolutions() {
     return sequence;
   };
 
-  // Synchronized pause/resume logic - stop every 2 seconds for 1 second
+  // Smooth continuous scrolling - no pause/resume for smoother animation
   useEffect(() => {
-    const cycle = () => {
-      // Scroll for 2 seconds
-      setIsPaused(false);
-      
-      // Stop after 2 seconds for 1 second
-      setTimeout(() => {
-        setIsPaused(true);
-        
-        // Resume after 1 second pause
-        setTimeout(() => {
-          cycle(); // Repeat the cycle
-        }, 1000);
-      }, 2000);
-    };
-
-    // Start the cycle
-    cycle();
+    // Keep animations running continuously for smoother effect
+    setIsPaused(false);
   }, []);
 
   return (
     <section className="bg-white py-12 sm:py-16 md:py-20">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-[1400px] px-4">
         {/* Header Section */}
         <div className="mb-8 sm:mb-12 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-slate-900">
@@ -178,10 +163,16 @@ function IndustrySolutions() {
                       className={`animate-icon-scroll-${positionIndex + 1} flex flex-col`}
                       style={{
                         animationPlayState: isPaused ? "paused" : "running",
+                        transition: "animation-play-state 0.3s ease",
                       }}
                     >
                       {sequence.map((icon, i) => (
-                        <div key={`${icon.id}-${i}`}>{icon.svg}</div>
+                        <div 
+                          key={`${icon.id}-${i}`}
+                          className="flex-shrink-0"
+                        >
+                          {icon.svg}
+                        </div>
                       ))}
                     </div>
                   </div>
