@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import navDropdowns from "../data/navDropdowns.json";
+import DropdownIcon from "./DropdownIcon";
 
 const navLinks = ["Platform", "Workflows", "Docs", "Pricing", "Contact"]
 
@@ -239,9 +240,11 @@ function NavDropdown({ data }) {
                   <a
                     key={itemIndex}
                     href="#"
-                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors group"
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50/80 transition-all duration-200 group cursor-pointer"
                   >
-                    <span className="text-2xl mt-0.5">{item.icon}</span>
+                          <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200/50 group-hover:from-blue-50 group-hover:to-blue-100 group-hover:border-blue-200 transition-all duration-200">
+                      <DropdownIcon iconName={item.icon} className="h-5 w-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
                         <h4 className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
@@ -270,9 +273,11 @@ function NavDropdown({ data }) {
             <a
               key={index}
               href="#"
-              className="flex items-start gap-3 p-3 rounded-lg hover:bg-white transition-colors group mb-2"
+              className="flex items-start gap-3 p-3 rounded-lg hover:bg-white transition-all duration-200 group mb-2 cursor-pointer"
             >
-              <span className="text-2xl mt-0.5">{item.icon}</span>
+              <div className="flex-shrink-0 flex items-center justify-center w-11 h-11 rounded-lg bg-white border border-slate-200/50 group-hover:bg-gradient-to-br group-hover:from-blue-50 group-hover:to-blue-100 group-hover:border-blue-200 transition-all duration-200 shadow-sm group-hover:shadow">
+                <DropdownIcon iconName={item.icon} className="h-5 w-5 text-slate-600 group-hover:text-blue-600 transition-colors" />
+              </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2">
                   <h4 className="text-sm font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
